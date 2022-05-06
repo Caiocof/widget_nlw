@@ -1,0 +1,3 @@
+.PopoverButton{
+    @apply top-5 right-5 absolute text-zinc-400 hover:text-zinc-100
+}

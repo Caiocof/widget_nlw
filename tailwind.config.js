@@ -5,6 +5,9 @@ module.exports = {
       colors:{
         brand:{
           500: '#8257e6'
+        },
+        zinc: {
+          specific:'#09090A'
         }
       }
     },
