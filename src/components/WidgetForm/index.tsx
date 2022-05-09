@@ -6,6 +6,7 @@ import ideaImageUrl from '../../assets/idea.svg'
 import thoughtImageUrl from '../../assets/thought.svg'
 import { FeedbackTypeStep } from "./Steps/FeedbackTypeStep";
 import { FeedbackContentStep } from "./Steps/FeedbackContentStep";
+import { FeedbackSuccessStep } from "./Steps/FeedbackSuccessStep";
 
 
 export const feedbackTypes = {
@@ -38,22 +39,30 @@ export type FeedbackType = keyof typeof feedbackTypes;
 export function WidgetForm() {
 
   const [feedbackType, setFeedbackType] = useState<FeedbackType | null>(null)
+  const [feedbackSend, setFeedbackSend] = useState(false)
 
-  function handleRestartFeedback(){
+  function handleRestartFeedback() {
     setFeedbackType(null)
   }
 
   return (
     <div className="bodyForm">
-      {!feedbackType ? (
-        <FeedbackTypeStep onFeedbackTypeChanged={setFeedbackType} />
+      {feedbackSend ? (
+        <FeedbackSuccessStep />
       ) : (
-        <FeedbackContentStep 
-        feedbackType={feedbackType} 
-        onFeedBackRestart={handleRestartFeedback}
-        />
-      )}
-
+        <>
+          {!feedbackType ? (
+            <FeedbackTypeStep onFeedbackTypeChanged={setFeedbackType} />
+          ) : (
+            <FeedbackContentStep
+              feedbackType={feedbackType}
+              onFeedbackRestart={handleRestartFeedback}
+              onFeedbackSend={() => setFeedbackSend(true)}
+            />
+          )}
+        </>
+      )
+      }
 
       <footer>
         Feito com ♥ no <a href="">NLW</a>
