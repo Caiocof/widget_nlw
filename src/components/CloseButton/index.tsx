@@ -1,6 +1,8 @@
 import { Popover } from '@headlessui/react'
 import { X } from 'phosphor-react';
 
+import './CloseButton.css'
+
 export function CloseButton() {
     return (
         <Popover.Button className='PopoverButton' title='Close Feedback Form'>

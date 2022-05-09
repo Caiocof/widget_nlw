@@ -8,7 +8,6 @@ import { FeedbackTypeStep } from "./Steps/FeedbackTypeStep";
 import { FeedbackContentStep } from "./Steps/FeedbackContentStep";
 
 
-
 export const feedbackTypes = {
   BUG: {
     title: 'Problema',

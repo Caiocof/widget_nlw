@@ -1,4 +1,4 @@
-import { CloseButton } from "../../CloseButton/CloseButton";
+import { CloseButton } from "../../CloseButton";
 import { FeedbackType, feedbackTypes } from "../WidgetForm"
 
 interface FeedbackTypeStepProps {

@@ -5,7 +5,7 @@ import { App } from './App'
 import './global.css'
 import './components/WidgetButton/WidgetButton.css'
 import './components/WidgetForm/WidgetForm.css'
-import './components/CloseButton/CloseButton.css'
+import './components/WidgetForm/Steps/Steps.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
