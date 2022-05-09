@@ -1,4 +1,4 @@
-import { ArrowLeft } from "phosphor-react"
+import { ArrowLeft, Camera } from "phosphor-react"
 import { CloseButton } from "../../CloseButton/CloseButton"
 import { FeedbackType, feedbackTypes } from "../WidgetForm"
 
@@ -15,10 +15,10 @@ export function FeedbackContentStep({ feedbackType, onFeedBackRestart }: Feedbac
     return (
         <>
             <header>
-                <button 
-                type="button" 
-                className="top-5 left-5 absolute text-zinc-400 hover:text-slate-100"
-                onClick={onFeedBackRestart}
+                <button
+                    type="button"
+                    className="top-5 left-5 absolute text-zinc-400 hover:text-slate-100"
+                    onClick={onFeedBackRestart}
                 >
                     <ArrowLeft width="bold" className="w-4 h-4" />
                 </button>
@@ -29,9 +29,20 @@ export function FeedbackContentStep({ feedbackType, onFeedBackRestart }: Feedbac
                 <CloseButton />
             </header>
 
-            <div className="typeFeedback">
-
-            </div>
+            <form className="my-4 w-full">
+                <textarea
+                    className="feedbackContentArea"
+                    placeholder="Conte com detalhes o que está acontecendo..."
+                />
+                <footer className="flex gap-2 mt-2">
+                    <button type="button" className="feedbackContentCamera"> <Camera className="w-6 h-6 text-zinc-100" /></button>
+                    <button
+                        type="submit"
+                        className="feedbackContentButtonSubmit">
+                        Enviar Feedback
+                    </button>
+                </footer>
+            </form>
         </>
     )
 }
