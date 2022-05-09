@@ -1,11 +1,15 @@
-import { CloseButton } from "../CloseButton/CloseButton";
+import { useState } from "react";
+
 
 import bugImageUrl from '../../assets/bug.svg'
 import ideaImageUrl from '../../assets/idea.svg'
 import thoughtImageUrl from '../../assets/thought.svg'
+import { FeedbackTypeStep } from "./Steps/FeedbackTypeStep";
+import { FeedbackContentStep } from "./Steps/FeedbackContentStep";
 
 
-const feedbackTypes = {
+
+export const feedbackTypes = {
   BUG: {
     title: 'Problema',
     image: {
@@ -29,29 +33,27 @@ const feedbackTypes = {
   },
 }
 
+export type FeedbackType = keyof typeof feedbackTypes;
+
 
 export function WidgetForm() {
+
+  const [feedbackType, setFeedbackType] = useState<FeedbackType | null>(null)
+
+  function handleRestartFeedback(){
+    setFeedbackType(null)
+  }
+
   return (
     <div className="bodyForm">
-      <header>
-        <span>Deixe seu feedback</span>
-        <CloseButton />
-      </header>
-      <div className="typeFeedback">
-        {Object.entries(feedbackTypes).map(([key, value]) => {
-          return (
-            <button
-              key={key}
-              className="buttonTypeFeedback"
-              // onClick={}
-              type="button"
-            >
-              <img src={value.image.source} alt={value.image.alt} />
-              <span>{value.title}</span>
-            </button>
-          )
-        })}
-      </div>
+      {!feedbackType ? (
+        <FeedbackTypeStep onFeedbackTypeChanged={setFeedbackType} />
+      ) : (
+        <FeedbackContentStep 
+        feedbackType={feedbackType} 
+        onFeedBackRestart={handleRestartFeedback}
+        />
+      )}
 
 
       <footer>
