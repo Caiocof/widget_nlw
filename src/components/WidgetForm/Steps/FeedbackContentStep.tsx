@@ -8,13 +8,13 @@ import { FeedbackType, feedbackTypes } from ".."
 interface FeedbackContentStepProps {
     feedbackType: FeedbackType;
     onFeedbackRestart: () => void;
-    onFeedbackSend: () => void;
+    onFeedbackSent: () => void;
 }
 
 
 
 
-export function FeedbackContentStep({ feedbackType, onFeedbackRestart, onFeedbackSend }: FeedbackContentStepProps) {
+export function FeedbackContentStep({ feedbackType, onFeedbackRestart, onFeedbackSent }: FeedbackContentStepProps) {
 
     const feedbackTypesInfo = feedbackTypes[feedbackType]
     const [screenshot, setScreenshot] = useState<String | null>(null)
@@ -28,7 +28,7 @@ export function FeedbackContentStep({ feedbackType, onFeedbackRestart, onFeedbac
             comment
         );
 
-        onFeedbackSend()
+        onFeedbackSent()
 
     }
 
